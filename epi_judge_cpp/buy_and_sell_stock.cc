@@ -1,9 +1,14 @@
 #include <vector>
 #include "test_framework/generic_test.h"
 using std::vector;
+
 double BuyAndSellStockOnce(const vector<double>& prices) {
-  // TODO - you fill in here.
-  return 0.0;
+	double maxProfit = 0.0, minPrice = INT_MAX;
+	for (auto const& price: prices) {
+		minPrice = std::min(price, minPrice);
+		maxProfit= std::max(maxProfit, price - minPrice);
+	}
+	return maxProfit;
 }
 
 int main(int argc, char* argv[]) {
